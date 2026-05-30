@@ -16,7 +16,11 @@ SUPPORTED_EXTENSIONS = {
     '.json', '.md',
 }
 
-IGNORE_DIRS = {'node_modules', '.git', 'dist', 'build', '__pycache__', '.next', 'vendor', 'coverage'}
+IGNORE_DIRS = {
+    'node_modules', '.git', 'dist', 'build', '__pycache__', '.next',
+    'vendor', 'coverage', '.venv', 'venv', 'env', '.pytest_cache',
+    '.mypy_cache', '.ruff_cache',
+}
 
 MAX_FILE_SIZE = int(os.environ.get('MAX_FILE_SIZE', 100_000))  # bytes
 
