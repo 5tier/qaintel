@@ -1,0 +1,14 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends git curl ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY indexer/requirements.txt /app/indexer/requirements.txt
+RUN pip install --no-cache-dir -r /app/indexer/requirements.txt
+
+COPY indexer /app/indexer
+
+ENTRYPOINT ["python", "-m", "indexer.index"]

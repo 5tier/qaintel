@@ -1,0 +1,10 @@
+FROM oven/bun:1
+
+WORKDIR /app/mcp-server
+
+COPY mcp-server/package.json ./
+RUN bun install --production
+
+COPY mcp-server/src ./src
+
+CMD ["bun", "run", "src/server.ts"]
